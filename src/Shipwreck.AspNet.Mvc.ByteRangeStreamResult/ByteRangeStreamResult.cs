@@ -159,11 +159,10 @@ namespace Shipwreck.AspNet.Mvc
                     res.Headers["Accept-Ranges"] = "bytes";
                 }
 
-
 #if ASPNET_CORE
                 if (context.HttpContext.Request.Method == "HEAD")
 #else
-                  if (context.HttpContext.Request         .HttpMethod   == "HEAD")
+                if (context.HttpContext.Request.HttpMethod == "HEAD")
 #endif
                 {
                     return;
@@ -176,9 +175,8 @@ namespace Shipwreck.AspNet.Mvc
                 {
 #if ASPNET_CORE
                     await StreamCopyOperation.CopyToAsync(_Stream, context.HttpContext.Response.Body, length, context.HttpContext.RequestAborted).ConfigureAwait(false);
-
 #else
-                        while (res.IsClientConnected && length > 0)          
+                    while (res.IsClientConnected && length > 0)
                     {
                         var l = _Stream.Read(buff, 0, (int)Math.Min(length, buff.Length));
                         if (l <= 0)
@@ -188,7 +186,7 @@ namespace Shipwreck.AspNet.Mvc
                         length -= l;
                         res.OutputStream.Write(buff, 0, l);
                         res.Flush();
-                    }   
+                    }
 #endif
                 }
 #if ASPNET_CORE

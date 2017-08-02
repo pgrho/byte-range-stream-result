@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.6;net452</TargetFrameworks>
+    <RootNamespace>Shipwreck.AspNetCore</RootNamespace>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>shipwreck.jp</Authors>
+    <Company />
+    <Description>IActionResult that supports HTTP Range bytes Header.</Description>
+    <Version>1.0.4</Version>
+    <PackageProjectUrl>https://github.com/pgrho/byte-range-stream-result</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)' == 'net452'">
+    <DefineConstants>TRACE;DEBUG;NET452;ASPNET_CORE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU' AND '$(TargetFramework)' == 'net452'">
+    <DefineConstants>TRACE;RELEASE;NET452;ASPNET_CORE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)' == 'netstandard1.6'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_6;ASPNET_CORE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU' AND '$(TargetFramework)' == 'netstandard1.6'">
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD1_6;ASPNET_CORE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc1521.cs" Link="Shipwreck.Web.Rfc\Rfc1521.cs" />
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc2231.cs" Link="Shipwreck.Web.Rfc\Rfc2231.cs" />
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc2616.cs" Link="Shipwreck.Web.Rfc\Rfc2616.cs" />
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc6266.cs" Link="Shipwreck.Web.Rfc\Rfc6266.cs" />
+    <Compile Include="..\Shipwreck.AspNet.Mvc.ByteRangeStreamResult\ByteRange.cs" Link="ByteRange.cs" />
+    <Compile Include="..\Shipwreck.AspNet.Mvc.ByteRangeStreamResult\ByteRangeStreamResult.cs" Link="ByteRangeStreamResult.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shipwreck.Web.Rfc\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="1.1.3" />
+  </ItemGroup>
+
+</Project>

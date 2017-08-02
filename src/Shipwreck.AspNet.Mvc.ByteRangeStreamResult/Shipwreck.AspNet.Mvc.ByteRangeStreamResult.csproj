@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net452</TargetFramework>
+    <RootNamespace>Shipwreck.AspNet.Mvc</RootNamespace>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>ActionResult that supports HTTP Range bytes Header.</Description>
+    <Version>1.0.4</Version>
+    <Authors>shipwreck.jp</Authors>
+    <Company />
+    <PackageProjectUrl>https://github.com/pgrho/byte-range-stream-result</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc1521.cs" Link="Shipwreck.Web.Rfc\Rfc1521.cs" />
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc2231.cs" Link="Shipwreck.Web.Rfc\Rfc2231.cs" />
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc2616.cs" Link="Shipwreck.Web.Rfc\Rfc2616.cs" />
+    <Compile Include="..\..\rfc\src\Shipwreck.Web.Rfc\Rfc6266.cs" Link="Shipwreck.Web.Rfc\Rfc6266.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shipwreck.Web.Rfc\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="1.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+</Project>

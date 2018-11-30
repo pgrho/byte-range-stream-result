@@ -1,20 +1,23 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Shipwreck.Web.Rfc;
+
 #if ASPNET_CORE
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.Extensions;
 #else
+
 using System.Web;
 using System.Web.Mvc;
+
 #endif
 
 #if ASPNET_CORE
 namespace Shipwreck.AspNetCore
 #else
+
 namespace Shipwreck.AspNet.Mvc
 #endif
 {
@@ -86,10 +89,14 @@ namespace Shipwreck.AspNet.Mvc
         /// </summary>
         public bool IgnoreDisconnection { get; set; }
 
+        public string ETag { get; set; }
+
+        public DateTime? LastModified { get; set; }
 
 #if ASPNET_CORE
         public async Task ExecuteResultAsync(ActionContext context)
 #else
+
         /// <inheritdoc />
         public override void ExecuteResult(ControllerContext context)
 #endif
@@ -157,6 +164,16 @@ namespace Shipwreck.AspNet.Mvc
                 if (AcceptRanges)
                 {
                     res.Headers["Accept-Ranges"] = "bytes";
+                }
+
+                if (ETag?.Length > 0)
+                {
+                    res.Headers["ETag"] = "\"" + ETag + "\"";
+                }
+
+                if (LastModified != null)
+                {
+                    res.Headers["Last-Modified"] = LastModified.Value.ToString("R");
                 }
 
 #if ASPNET_CORE

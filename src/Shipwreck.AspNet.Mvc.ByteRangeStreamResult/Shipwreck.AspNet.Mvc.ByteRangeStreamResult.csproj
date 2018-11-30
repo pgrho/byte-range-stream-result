@@ -5,7 +5,7 @@
     <RootNamespace>Shipwreck.AspNet.Mvc</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>ActionResult that supports HTTP Range bytes Header.</Description>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>shipwreck.jp</Authors>
     <Company />
     <PackageProjectUrl>https://github.com/pgrho/byte-range-stream-result</PackageProjectUrl>

@@ -7,7 +7,7 @@
     <Authors>shipwreck.jp</Authors>
     <Company />
     <Description>IActionResult that supports HTTP Range bytes Header.</Description>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <PackageProjectUrl>https://github.com/pgrho/byte-range-stream-result</PackageProjectUrl>
   </PropertyGroup>
 
